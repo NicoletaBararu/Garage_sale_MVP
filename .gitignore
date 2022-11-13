@@ -4,6 +4,7 @@
 
 #production 
 /build
+/client/build
 
 #misc
 .DS_STORE
