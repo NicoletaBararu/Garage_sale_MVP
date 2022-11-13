@@ -14,6 +14,7 @@ function setupServer() {
 
   // User routes
   app.get("/api/user", userController.index);
+  //app.post("api/user/save", userController.save);
 
   return app;
 }

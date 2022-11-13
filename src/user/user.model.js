@@ -17,4 +17,18 @@ module.exports = {
       })
       .from(USER_TABLE);
   },
+ /*
+  create() {
+    return knex
+      .insert({
+        username: "user.username",
+        first_name: "user.first_name",
+        last_name: "user.last_name",
+        email: "user.email",
+        password: "user.password",
+        id: "user.id",
+      })
+      .into(USER_TABLE);
+  },
+  */
 };
