@@ -1,15 +1,21 @@
+const express = require("express");
 
-const express = require('express');
+const app = express();
+
+const userController = require("../src/user/user.controller");
 
 function setupServer() {
- const app = express();
-    //middleware
-    app.use(express.json());
+  //middleware
+  app.use(express.json());
 
-    app.get('/hello', (req, res) => {
-        res.status(200).send('hello world');
-    });
-    return app;
+  app.get("/hello", (req, res) => {
+    res.status(200).send("hello world");
+  });
+
+  // User routes
+  app.get("/api/user", userController.index);
+
+  return app;
 }
 
 module.exports = setupServer;
