@@ -1,11 +1,13 @@
 const express = require("express");
+const path = require('path');
+const db = require("../db/knex");
 
-const app = express();
-
-const userController = require("../src/user/user.controller");
+const userController = require("../db/seeds/src/user/user.controller");
 
 function setupServer() {
-  //middleware
+  const app = express();
+
+  app.use(express.static(path.resolve(__dirname, "../client/build")));
   app.use(express.json());
 
   app.get("/hello", (req, res) => {
