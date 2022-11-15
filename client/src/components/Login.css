@@ -1,0 +1,39 @@
+.txt__login {
+  font-family: "Montserrat", sans-serif;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.container__login {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem 3rem;
+}
+
+.container__login--left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container__login--right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container__login--right img {
+  width: 70%;
+  margin-top: 8rem;
+}
+
+.container__login--form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
