@@ -6,7 +6,7 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
-import { app , auth } from "../firebase";
+import { auth } from "../firebase";
 import "./Signup.css";
 import {
   EmailOutlined,
@@ -15,15 +15,16 @@ import {
 } from "@mui/icons-material";
 import { Button, InputAdornment, TextField } from "@mui/material";
 
-
-const Signup = ({ user }) => {
+const Signup = ({ setUser, user, setQueryEmail }) => {
   const [formData, setFormData] = useState("");
+  console.log(formData);
 
-  function handleChangeForm(event) {
-    const { name, value } = event.target;
+  function handleChangeForm(e) {
+    const { name, value } = e.target;
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
+        [name]: value,
       };
     });
   }
@@ -31,7 +32,6 @@ const Signup = ({ user }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     handleSubmitToFB(event);
-    //handleSubmitToPG(event);
   };
 
   const handleSubmitToFB = async (event) => {
@@ -43,26 +43,14 @@ const Signup = ({ user }) => {
         formData.email,
         formData.password
       );
+      //console.log(formData.email);
+      //console.log(formData.password)
     } catch (error) {
       alert(error);
     }
   };
-/*
-  const handleSubmitToPG = async (event) => {
-    event.preventDefault();
-    await axios
-      .post("/signup/", {
-        email: formData.email,
-        password: formData.password,
-        username: formData.username,
-        first_name: formData.firstName,
-        last_name: formData.lastName,
-      })
-      .then((response) => {
-        setQueryEmail(response.data);
-      });
-  };
-*/
+ 
+
   return (
     <div>
       {user ? (
@@ -173,5 +161,6 @@ const Signup = ({ user }) => {
     </div>
   );
 };
+
 
 export default Signup;
