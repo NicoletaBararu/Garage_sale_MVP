@@ -7,34 +7,25 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { app } from "../firebase";
-
 import "./Login.css";
-import {
-  EmailOutlined,
-  PasswordOutlined,
-} from "@mui/icons-material";
+import { EmailOutlined, PasswordOutlined } from "@mui/icons-material";
 
 import { Button, InputAdornment, TextField } from "@mui/material";
 
-
 const auth = getAuth(app);
 
-const Login = ({
-  setUser,
-  user,
-  setQueryEmail,
-}) => {
-  const [formData, setFormData] = useState("");
+const Login = ({ setUser, user, setQueryEmail }) => {
+  const [formData, setFormData] = useState({ email: "", password: "" });
 
   function handleChangeForm(event) {
     const { name, value } = event.target;
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
+        [name]: value,
       };
     });
   }
-  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -43,7 +34,6 @@ const Login = ({
 
   const handleSubmitToFB = async (event) => {
     event.preventDefault();
-  
     try {
       await signInWithEmailAndPassword(auth, formData.email, formData.password);
     } catch (err) {
@@ -56,7 +46,6 @@ const Login = ({
       setUser(currentUser);
     });
   }, []);
- 
 
   return (
     <div>

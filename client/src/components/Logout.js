@@ -11,15 +11,17 @@ export default function Logout() {
 
   const logout = async () => {
     await signOut(auth);
-    navigate("/login/");
+    navigate("/home/");
   };
   return (
     <Button
+      type="submit"
+      fullWidth
       variant="outlined"
       onClick={logout}
       style={{ color: "#023047", borderColor: "#023047" }}
     >
-      Log Out
+     Log out
     </Button>
   );
 }

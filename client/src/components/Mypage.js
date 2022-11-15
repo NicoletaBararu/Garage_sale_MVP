@@ -2,7 +2,7 @@
  function Mypage () {
  return (
     <div>
-        <h1> Hello</h1>
+        <h1> User profile </h1>
     </div>
  )
 }

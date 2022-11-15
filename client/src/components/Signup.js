@@ -18,6 +18,8 @@ import { Button, InputAdornment, TextField } from "@mui/material";
 const Signup = ({ setUser, user, setQueryEmail }) => {
   const [formData, setFormData] = useState("");
   console.log(formData);
+  
+  //const[user, setUser] = useState()
 
   function handleChangeForm(e) {
     const { name, value } = e.target;
@@ -34,17 +36,19 @@ const Signup = ({ setUser, user, setQueryEmail }) => {
     handleSubmitToFB(event);
   };
 
-  const handleSubmitToFB = async (event) => {
+  const handleSubmitToFB =  (event) => {
     event.preventDefault();
 
     try {
-      await createUserWithEmailAndPassword(
+      createUserWithEmailAndPassword(
         auth,
         formData.email,
         formData.password
-      );
-      //console.log(formData.email);
-      //console.log(formData.password)
+      ).then((res) =>{ 
+        console.log(res.user);
+    });
+      console.log(formData.email);
+      console.log(formData.password)
     } catch (error) {
       alert(error);
     }
