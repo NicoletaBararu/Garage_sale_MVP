@@ -53,6 +53,9 @@ function App() {
                 />
               }
             ></Route>
+            <Route path="/update/:id" element={<Mypage />}>
+
+            </Route>
           </Routes>
         </main>
       </BrowserRouter>
